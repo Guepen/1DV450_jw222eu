@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150127183824) do
+ActiveRecord::Schema.define(version: 20150127200845) do
 
   create_table "keys", force: :cascade do |t|
     t.string   "key"
@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 20150127183824) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest"
     t.integer  "is_admin"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end

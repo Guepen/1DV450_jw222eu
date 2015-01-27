@@ -1,21 +1,13 @@
 class UsersController < ApplicationController
     # POST /users/login & /login
     def login
-        user = User.where(
-            :email => params[:email]
-        )
+        user = User.where(email: params[:email]).take
+        user = user.authenticate(params[:password])
 
-        if user.exists?
-            user = user[0]
+        if user
+            session[:user] = user.id
 
-            hash = params[:password].crypt(user[:salt]);
-            if user[:password] == hash
-                session[:user] = user[:id]
-
-                redirect_to '/keys'
-            else
-                redirect_to '/', :notice => 'Fel användarnamn eller lösenord'
-            end
+            redirect_to '/keys'
         else
             redirect_to '/', :notice => 'Fel användarnamn eller lösenord'
         end
