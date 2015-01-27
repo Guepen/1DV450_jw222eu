@@ -20,4 +20,10 @@ class UsersController < ApplicationController
             redirect_to '/', :notice => 'Fel användarnamn eller lösenord'
         end
     end
+
+    def logout
+        reset_session
+
+        redirect_to '/', :notice => 'Du är utloggad'
+    end
 end
