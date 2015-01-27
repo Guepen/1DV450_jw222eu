@@ -1,3 +1,6 @@
 Rails.application.routes.draw do
-  root :to => 'home#index'
+    post '/login' => 'users#login'
+
+
+    root :to => 'home#index'
 end
