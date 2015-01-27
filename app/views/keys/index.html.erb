@@ -1,1 +1,23 @@
-Hej
+    <div class="container">
+
+        <h1>Mina API-nycklar</h1>
+
+        <% if !@key %>
+
+            <p>
+                Inga nycklar hittades.
+            </p>
+
+            <p>
+                <a href="/keys/create">Skapa ny nyckel</a>
+            </p>
+
+        <% else %>
+
+            <p>
+                <b>Nyckel:</b> <%= @key %> <a href="/keys/delete">Radera</a>
+            </p>
+
+        <% end %>
+
+    </div>
