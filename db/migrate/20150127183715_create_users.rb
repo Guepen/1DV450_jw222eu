@@ -3,7 +3,7 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.string :email
       t.string :password
-      t.int :is_admin
+      t.integer :is_admin
 
       t.timestamps null: false
     end
