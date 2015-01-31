@@ -6,7 +6,16 @@ class KeysController < ApplicationController
     end
 
     def delete
+        user = session[:user]
 
+        if is_admin
+
+        else
+            key = Key.find_by(user_id: user)
+            key.destroy
+        end
+
+        redirect_to '/keys'
     end
 
     def index
@@ -16,15 +25,14 @@ class KeysController < ApplicationController
             users = User.all
 
             @users = users.map { |user|
-                key = Key.where(user_id: user.id).take
+                key = Key.find_by(user_id: user.id)
 
                 user.key = key.key
 
                 user
             }
         else
-            key = Key.where(user_id: user).take
-            @key = key.key
+            @key = Key.find_by(user_id: user)
         end
     end
 end

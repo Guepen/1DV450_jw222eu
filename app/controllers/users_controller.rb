@@ -20,7 +20,7 @@ class UsersController < ApplicationController
 
     # POST /users/login & /login
     def login
-        user = User.where(email: params[:email]).take
+        user = User.find_by(email: params[:email])
         user = user.authenticate(params[:password])
 
         if user
