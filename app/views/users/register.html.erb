@@ -1,9 +1,9 @@
 
     <div class="container">
 
-        <h1>Logga in</h1>
+        <h1>Registrera</h1>
 
-        <form action="/login" method="post">
+        <form action="/create" method="post">
 
             <p>
                 <%= flash[:notice] %>
@@ -19,14 +19,8 @@
                 <input type="password" name="password" id="password" data-validation="required">
             </p>
 
-            <p>
-                <input type="submit" value="Logga in" class="btn">
-            </p>
+            <input type="submit" value="Registrera" class="btn">
 
         </form>
-
-        <p>
-            <a href="/register">Registrera</a>
-        </p>
 
     </div>

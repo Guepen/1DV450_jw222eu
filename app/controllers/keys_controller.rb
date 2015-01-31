@@ -4,6 +4,7 @@ class KeysController < ApplicationController
     def index
         user = session[:user]
 
-        @key = Key.where(user_id: user).take
+        key = Key.where(user_id: user).take
+        @key = key.key
     end
 end
