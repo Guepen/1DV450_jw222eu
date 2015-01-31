@@ -10,6 +10,8 @@ class KeysController < ApplicationController
     end
 
     def index
+        user = session[:user]
+
         if is_admin
             users = User.all
 

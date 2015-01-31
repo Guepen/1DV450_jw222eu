@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
         user = session[:user]
         user = User.where(id: user).take
 
-        user.is_admin
+        user.is_admin == 1
     end
 end
