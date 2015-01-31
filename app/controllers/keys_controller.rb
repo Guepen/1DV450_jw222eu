@@ -1,8 +1,19 @@
+require 'securerandom'
+require 'digest/sha2'
+
 class KeysController < ApplicationController
     before_filter :require_login
 
     def create
+        user = session[:user]
+        user = User.find_by(id: user)
 
+        key = Key.new
+        key.key = Digest::SHA1.new << user.email + SecureRandom.hex(8)
+        key.user_id = user.id
+        key.save!
+
+        redirect_to '/keys'
     end
 
     def delete

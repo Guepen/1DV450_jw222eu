@@ -9,7 +9,7 @@ class UsersController < ApplicationController
         user.save!
 
         key = Key.new
-        key.key = Digest::SHA1.new << params[:email] + SecureRandom.hex(8)
+        key.key = Digest::SHA1.new << user.email + SecureRandom.hex(8)
         key.user_id = user.id
         key.save!
 
@@ -18,7 +18,6 @@ class UsersController < ApplicationController
         redirect_to '/keys'
     end
 
-    # POST /users/login & /login
     def login
         user = User.find_by(email: params[:email])
         user = user.authenticate(params[:password])
