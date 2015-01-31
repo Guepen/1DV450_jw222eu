@@ -8,12 +8,11 @@
         %>
 
             <dl>
+                <dt><%= user.app.title %></dt>
+                <dd><%= simple_format(user.app.description) %></dd>
                 <dd><b>E-post:</b> <%= user.email %></dd>
-                <dd><b>Nyckel:</b> <%= user.key ? user.key : '-' %></dd>
-
-                <% if user.key %>
-                <dd><a href="/apps/delete/<%= user.key %>">Radera</a></dd>
-                <% end %>
+                <dd><b>Nyckel:</b> <%= user.app.key %></dd>
+                <dd><a href="/apps/delete/<%= user.app.key %>">Radera</a></dd>
             </dl>
 
         <%
@@ -21,9 +20,12 @@
         elsif @app
         %>
 
-           <p>
-               <b>Nyckel:</b> <%= @app.key %> <a href="/apps/delete">Radera</a>
-           </p>
+            <dl>
+                <dt><%= @app.title %></dt>
+                <dd><%= simple_format(@app.description) %></dd>
+                <dd><b>Nyckel:</b> <%= @app.key %></dd>
+                <dd><a href="/apps/delete">Radera</a></dd>
+            </dl>
 
         <%
         else
@@ -34,7 +36,7 @@
             </p>
 
             <p>
-                <a href="/apps/create">Skapa ny nyckel</a>
+                <a href="/apps/create">Skapa ny applikation</a>
             </p>
 
         <%

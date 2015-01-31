@@ -1,22 +1,12 @@
 
     <div class="container">
 
-        <h1>Registrera</h1>
+        <h1>Skapa ny applikation</h1>
 
-        <form action="/users/save" method="post">
+        <form action="/apps/save" method="post">
 
             <p>
                 <%= flash[:notice] %>
-            </p>
-
-            <label for="email">Email</label>
-            <p>
-                <input type="email" name="email" id="email" data-validation="required">
-            </p>
-
-            <label for="password">Lösenord</label>
-            <p>
-                <input type="password" name="password" id="password" data-validation="required">
             </p>
 
             <label for="title">Namn på applikationen</label>
@@ -29,7 +19,7 @@
                 <textarea name="description" id="description" rows="8" cols="40" data-validation="required"></textarea>
             </p>
 
-            <input type="submit" value="Registrera" class="btn">
+            <input type="submit" value="Skapa" class="btn">
 
         </form>
 

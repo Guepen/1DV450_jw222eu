@@ -5,15 +5,7 @@ class AppsController < ApplicationController
     before_filter :require_login
 
     def create
-        user = session[:user]
-        user = User.find_by(id: user)
 
-        app = App.new
-        app.key = Digest::SHA1.new << user.email + SecureRandom.hex(8)
-        app.user_id = user.id
-        app.save!
-
-        redirect_to '/apps'
     end
 
     def delete
@@ -39,17 +31,39 @@ class AppsController < ApplicationController
         if is_admin
             users = User.all
 
-            @users = users.map { |user|
+            users = users.map { |user|
                 app = App.find_by(user_id: user.id)
 
                 if app
-                    user.key = app.key
+                    user.app = {
+                        key: app.key,
+                        title: app.title,
+                        description: app.description
+                    }
                 end
 
                 user
             }
+
+            @users = users.filter { |user|
+                user.app != nil
+            }
         else
             @app = App.find_by(user_id: user)
         end
+    end
+
+    def save
+        user = session[:user]
+        user = User.find_by(id: user)
+
+        app = App.new
+        app.key = Digest::SHA1.new << user.email + SecureRandom.hex(8)
+        app.title = params[:title]
+        app.description = params[:description]
+        app.user_id = user.id
+        app.save!
+
+        redirect_to '/apps'
     end
 end
