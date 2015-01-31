@@ -8,14 +8,14 @@ class UsersController < ApplicationController
         user.password = params[:password]
         user.save!
 
-        key = Key.new
-        key.key = Digest::SHA1.new << user.email + SecureRandom.hex(8)
-        key.user_id = user.id
-        key.save!
+        app = App.new
+        app.key = Digest::SHA1.new << user.email + SecureRandom.hex(8)
+        app.user_id = user.id
+        app.save!
 
         session[:user] = user.id
 
-        redirect_to '/keys'
+        redirect_to '/apps'
     end
 
     def login
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
         if user
             session[:user] = user.id
 
-            redirect_to '/keys'
+            redirect_to '/apps'
         else
             redirect_to '/', :notice => 'Fel användarnamn eller lösenord'
         end

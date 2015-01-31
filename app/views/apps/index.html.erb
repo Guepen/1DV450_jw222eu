@@ -12,17 +12,17 @@
                 <dd><b>Nyckel:</b> <%= user.key ? user.key : '-' %></dd>
 
                 <% if user.key %>
-                <dd><a href="/keys/delete/<%= user.key %>">Radera</a></dd>
+                <dd><a href="/apps/delete/<%= user.key %>">Radera</a></dd>
                 <% end %>
             </dl>
 
         <%
             end
-        elsif @key
+        elsif @app
         %>
 
            <p>
-               <b>Nyckel:</b> <%= @key.key %> <a href="/keys/delete">Radera</a>
+               <b>Nyckel:</b> <%= @app.key %> <a href="/apps/delete">Radera</a>
            </p>
 
         <%
@@ -34,7 +34,7 @@
             </p>
 
             <p>
-                <a href="/keys/create">Skapa ny nyckel</a>
+                <a href="/apps/create">Skapa ny nyckel</a>
             </p>
 
         <%

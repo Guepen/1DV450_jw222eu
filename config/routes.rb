@@ -4,9 +4,9 @@ Rails.application.routes.draw do
     get '/register' => 'users#register'
     post '/create' => 'users#create'
 
-    get '/keys' => 'keys#index'
-    get '/keys/create' => 'keys#create'
-    get '/keys/delete/(:key)' => 'keys#delete'
+    get '/apps' => 'apps#index'
+    get '/apps/create' => 'apps#create'
+    get '/apps/delete/(:key)' => 'apps#delete'
 
     root :to => 'home#index'
 end
