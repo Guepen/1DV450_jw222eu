@@ -10,6 +10,8 @@ class UsersController < ApplicationController
 
         app = App.new
         app.key = Digest::SHA1.new << user.email + SecureRandom.hex(8)
+        app.title = params[:title]
+        app.description = params[:description]
         app.user_id = user.id
         app.save!
 
