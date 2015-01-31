@@ -9,8 +9,11 @@
 
             <dl>
                 <dd><b>E-post:</b> <%= user.email %></dd>
-                <dd><b>Nyckel:</b> <%= user.key %></dd>
+                <dd><b>Nyckel:</b> <%= user.key ? user.key : '-' %></dd>
+
+                <% if user.key %>
                 <dd><a href="/keys/delete/<%= user.key %>">Radera</a></dd>
+                <% end %>
             </dl>
 
         <%

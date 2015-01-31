@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     post '/create' => 'users#create'
 
     get '/keys' => 'keys#index'
-    get '/keys/delete' => 'keys#delete'
+    get '/keys/delete/:key' => 'keys#delete'
 
     root :to => 'home#index'
 end

@@ -9,7 +9,11 @@ class KeysController < ApplicationController
         user = session[:user]
 
         if is_admin
+            key = Key.find_by(key: params[:key])
 
+            if key
+                key.destroy
+            end
         else
             key = Key.find_by(user_id: user)
             key.destroy
@@ -27,7 +31,9 @@ class KeysController < ApplicationController
             @users = users.map { |user|
                 key = Key.find_by(user_id: user.id)
 
-                user.key = key.key
+                if key
+                    user.key = key.key
+                end
 
                 user
             }
