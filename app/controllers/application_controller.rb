@@ -5,7 +5,13 @@ class ApplicationController < ActionController::Base
 
     def require_login
         if !session[:user]
-        redirect_to '/', :notice => 'Du måste vara inloggad för att visa denna sida'
+            redirect_to '/', :notice => 'Du måste vara inloggad för att visa denna sida'
+        end
+    end
+
+    def require_guest
+        if session[:user]
+            redirect_to '/apps'
         end
     end
 

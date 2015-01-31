@@ -21,6 +21,8 @@ class UsersController < ApplicationController
     end
 
     def login
+        require_guest
+
         user = User.find_by(email: params[:email])
         user = user.authenticate(params[:password])
 
@@ -34,8 +36,13 @@ class UsersController < ApplicationController
     end
 
     def logout
+        require_login
         reset_session
 
         redirect_to '/', :notice => 'Du är utloggad'
+    end
+
+    def register
+        require_guest
     end
 end
