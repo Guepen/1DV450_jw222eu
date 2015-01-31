@@ -1,12 +1,16 @@
 class KeysController < ApplicationController
     before_filter :require_login
 
+    def create
+
+    end
+
+    def delete
+
+    end
+
     def index
-        user = session[:user]
-
-        user = User.where(id: user).take
-
-        if user.is_admin
+        if is_admin
             @keys = Key.all
         else
             key = Key.where(user_id: user).take
