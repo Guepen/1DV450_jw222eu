@@ -4,7 +4,13 @@ class KeysController < ApplicationController
     def index
         user = session[:user]
 
-        key = Key.where(user_id: user).take
-        @key = key.key
+        user = User.where(id: user).take
+
+        if user.is_admin
+            @keys = Key.all
+        else
+            key = Key.where(user_id: user).take
+            @key = key.key
+        end
     end
 end

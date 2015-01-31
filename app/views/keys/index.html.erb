@@ -1,8 +1,29 @@
     <div class="container">
 
-        <h1>Mina API-nycklar</h1>
+        <h1>API-nycklar</h1>
 
-        <% if !@key %>
+        <%
+        if @keys
+
+            @keys.each do |key|
+        %>
+
+            <p>
+                <b>Nyckel:</b> <%= key.key %> <a href="/keys/delete/<%= key.key %>">Radera</a>
+            </p>
+
+        <%
+            end
+        elsif @key
+        %>
+
+           <p>
+               <b>Nyckel:</b> <%= @key %> <a href="/keys/delete">Radera</a>
+           </p>
+
+        <%
+        else
+        %>
 
             <p>
                 Inga nycklar hittades.
@@ -12,12 +33,8 @@
                 <a href="/keys/create">Skapa ny nyckel</a>
             </p>
 
-        <% else %>
-
-            <p>
-                <b>Nyckel:</b> <%= @key %> <a href="/keys/delete">Radera</a>
-            </p>
-
-        <% end %>
+        <%
+        end
+        %>
 
     </div>
