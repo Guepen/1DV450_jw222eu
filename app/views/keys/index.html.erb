@@ -3,14 +3,15 @@
         <h1>API-nycklar</h1>
 
         <%
-        if @keys
-
-            @keys.each do |key|
+        if @users
+            @users.each do |user|
         %>
 
-            <p>
-                <b>Nyckel:</b> <%= key.key %> <a href="/keys/delete/<%= key.key %>">Radera</a>
-            </p>
+            <dl>
+                <dd><b>E-post:</b> <%= user.email %></dd>
+                <dd><b>Nyckel:</b> <%= user.key %></dd>
+                <dd><a href="/keys/delete/<%= user.key %>">Radera</a></dd>
+            </dl>
 
         <%
             end

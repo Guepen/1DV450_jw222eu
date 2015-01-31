@@ -11,7 +11,15 @@ class KeysController < ApplicationController
 
     def index
         if is_admin
-            @keys = Key.all
+            users = User.all
+
+            @users = users.map { |user|
+                key = Key.where(user_id: user.id).take
+
+                user.key = key.key
+
+                user
+            }
         else
             key = Key.where(user_id: user).take
             @key = key.key
