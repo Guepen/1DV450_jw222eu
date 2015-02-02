@@ -24,15 +24,18 @@ class UsersController < ApplicationController
         require_guest
 
         user = User.find_by(email: params[:email])
-        user = user.authenticate(params[:password])
-
-        if user
-            session[:user] = user.id
-
-            redirect_to '/apps'
-        else
-            redirect_to '/', :notice => 'Fel användarnamn eller lösenord'
+        if !user
+            return redirect_to '/', :notice => 'Fel användarnamn eller lösenord'
         end
+
+        user = user.authenticate(params[:password])
+        if !user
+            return redirect_to '/', :notice => 'Fel användarnamn eller lösenord'
+        end
+
+        session[:user] = user.id
+
+        redirect_to '/apps'
     end
 
     def logout
