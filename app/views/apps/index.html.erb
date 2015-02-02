@@ -12,7 +12,7 @@
                 <dd><%= simple_format(user.app.description) %></dd>
                 <dd><b>E-post:</b> <%= user.email %></dd>
                 <dd><b>Nyckel:</b> <%= user.app.key %></dd>
-                <dd><a href="/apps/delete/<%= user.app.key %>">Radera</a></dd>
+                <dd><a href="/apps/delete/<%= user.app.key %>" class="btn btn-danger">Radera</a></dd>
             </dl>
 
         <%
@@ -24,7 +24,7 @@
                 <dt><%= @app.title %></dt>
                 <dd><%= simple_format(@app.description) %></dd>
                 <dd><b>Nyckel:</b> <%= @app.key %></dd>
-                <dd><a href="/apps/delete">Radera</a></dd>
+                <dd><a href="/apps/delete" class="btn btn-danger">Radera</a></dd>
             </dl>
 
         <%
@@ -36,7 +36,7 @@
             </p>
 
             <p>
-                <a href="/apps/create">Skapa ny applikation</a>
+                <a href="/apps/create" class="btn btn-success">Skapa ny applikation</a>
             </p>
 
         <%
