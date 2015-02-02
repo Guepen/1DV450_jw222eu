@@ -3,5 +3,5 @@ class User < ActiveRecord::Base
 
     validates :password, length: { minimum: 8 }, allow_nil: true
 
-    attr_accessor :key
+    attr_accessor :app
 end

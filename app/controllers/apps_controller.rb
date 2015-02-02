@@ -45,7 +45,7 @@ class AppsController < ApplicationController
                 user
             }
 
-            @users = users.filter { |user|
+            @users = users.select { |user|
                 user.app != nil
             }
         else

@@ -8,12 +8,13 @@
         %>
 
             <dl>
-                <dt><%= user.app.title %></dt>
-                <dd><%= simple_format(user.app.description) %></dd>
+                <dt><%= user.app[:title] %></dt>
+                <dd><%= simple_format(user.app[:description]) %></dd>
                 <dd><b>E-post:</b> <%= user.email %></dd>
-                <dd><b>Nyckel:</b> <%= user.app.key %></dd>
-                <dd><a href="/apps/delete/<%= user.app.key %>" class="btn btn-danger">Radera</a></dd>
+                <dd><b>Nyckel:</b> <%= user.app[:key] %></dd>
             </dl>
+
+            <a href="/apps/delete/<%= user.app[:key] %>" class="btn btn-danger">Radera</a>
 
         <%
             end
@@ -24,8 +25,9 @@
                 <dt><%= @app.title %></dt>
                 <dd><%= simple_format(@app.description) %></dd>
                 <dd><b>Nyckel:</b> <%= @app.key %></dd>
-                <dd><a href="/apps/delete" class="btn btn-danger">Radera</a></dd>
             </dl>
+
+            <a href="/apps/delete" class="btn btn-danger">Radera</a>
 
         <%
         else
