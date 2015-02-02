@@ -3,7 +3,7 @@
 
         <h1>Skapa ny applikation</h1>
 
-        <form action="/apps/save" method="post">
+        <form action="<%= url_for apps_save_path %>" method="post">
 
             <p>
                 <%= flash[:notice] %>

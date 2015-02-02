@@ -3,7 +3,7 @@
 
         <h1>Registrera</h1>
 
-        <form action="/users/save" method="post">
+        <form action="<%= url_for users_save_path %>" method="post">
 
             <p>
                 <%= flash[:notice] %>

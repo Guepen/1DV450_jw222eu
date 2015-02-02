@@ -14,7 +14,7 @@
                 <dd><b>Nyckel:</b> <%= user.app[:key] %></dd>
             </dl>
 
-            <a href="/apps/delete/<%= user.app[:key] %>" class="btn btn-danger">Radera</a>
+            <%= link_to 'Radera', { :controller  => 'apps', :action => 'delete', :key => user.app[:key] }, :class => 'btn btn-danger' %>
 
         <%
             end
@@ -27,7 +27,7 @@
                 <dd><b>Nyckel:</b> <%= @app.key %></dd>
             </dl>
 
-            <a href="/apps/delete" class="btn btn-danger">Radera</a>
+            <%= link_to 'Radera', { :controller => 'apps', :action => 'delete' }, :class => 'btn btn-danger' %>
 
         <%
         else
@@ -38,7 +38,7 @@
             </p>
 
             <p>
-                <a href="/apps/create" class="btn btn-success">Skapa ny applikation</a>
+                <%= link_to 'Skapa ny applikation', apps_create_path, :class => 'btn btn-success' %>
             </p>
 
         <%

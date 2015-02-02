@@ -22,7 +22,7 @@ class AppsController < ApplicationController
             app.destroy
         end
 
-        redirect_to '/apps'
+        redirect_to apps_path
     end
 
     def index
@@ -66,9 +66,9 @@ class AppsController < ApplicationController
         is_valid = app.save
 
         if !is_valid
-            return redirect_to '/apps/create', :notice => 'Alla fält måste fyllas i.'
+            return redirect_to apps_create_path, :notice => 'Alla fält måste fyllas i.'
         end
 
-        redirect_to '/apps'
+        redirect_to apps_path
     end
 end

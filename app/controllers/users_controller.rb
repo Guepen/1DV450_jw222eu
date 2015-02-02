@@ -10,7 +10,7 @@ class UsersController < ApplicationController
         is_valid = user.save
 
         if !is_valid
-            return redirect_to '/register', :notice => 'Alla fält måste fyllas i.'
+            return redirect_to register_path, :notice => 'Alla fält måste fyllas i.'
         end
 
         app = App.new
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
         is_valid = app.save
 
         if !is_valid
-            return redirect_to '/register', :notice => 'Alla fält måste fyllas i.'
+            return redirect_to register_path, :notice => 'Alla fält måste fyllas i.'
         end
 
         session[:user] = user.id
@@ -35,24 +35,24 @@ class UsersController < ApplicationController
 
         user = User.find_by(email: params[:email])
         if !user
-            return redirect_to '/', :notice => 'Fel användarnamn eller lösenord'
+            return redirect_to root_path, :notice => 'Fel användarnamn eller lösenord'
         end
 
         user = user.authenticate(params[:password])
         if !user
-            return redirect_to '/', :notice => 'Fel användarnamn eller lösenord'
+            return redirect_to root_path, :notice => 'Fel användarnamn eller lösenord'
         end
 
         session[:user] = user.id
 
-        redirect_to '/apps'
+        redirect_to apps_path
     end
 
     def logout
         require_login
         reset_session
 
-        redirect_to '/', :notice => 'Du är utloggad'
+        redirect_to root_path, :notice => 'Du är utloggad'
     end
 
     def register

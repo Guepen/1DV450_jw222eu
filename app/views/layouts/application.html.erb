@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 
-    <%= stylesheet_link_tag    'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 </head>
 
@@ -23,7 +23,7 @@
 
                 <% if is_signed_in? %>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/logout">Logga ut</a></li>
+                    <li><%= link_to 'Logga ut', logout_path %></li>
                 </ul>
                 <% end %>
 
