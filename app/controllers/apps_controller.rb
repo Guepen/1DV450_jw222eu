@@ -62,7 +62,12 @@ class AppsController < ApplicationController
         app.title = params[:title]
         app.description = params[:description]
         app.user_id = user.id
-        app.save!
+
+        is_valid = app.save
+
+        if !is_valid
+            return redirect_to '/apps/create', :notice => 'Alla fält måste fyllas i.'
+        end
 
         redirect_to '/apps'
     end

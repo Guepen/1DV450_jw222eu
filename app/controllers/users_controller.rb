@@ -6,14 +6,24 @@ class UsersController < ApplicationController
         user = User.new
         user.email = params[:email]
         user.password = params[:password]
-        user.save!
+
+        is_valid = user.save
+
+        if !is_valid
+            return redirect_to '/register', :notice => 'Alla fält måste fyllas i.'
+        end
 
         app = App.new
         app.key = Digest::SHA1.new << user.email + SecureRandom.hex(8)
         app.title = params[:title]
         app.description = params[:description]
         app.user_id = user.id
-        app.save!
+
+        is_valid = app.save
+
+        if !is_valid
+            return redirect_to '/register', :notice => 'Alla fält måste fyllas i.'
+        end
 
         session[:user] = user.id
 
