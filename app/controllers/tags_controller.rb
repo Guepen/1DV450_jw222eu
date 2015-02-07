@@ -2,10 +2,8 @@ class TagsController < ApiController
     before_filter :require_authentication
 
     def index
-        data = {
-            message: 'Hello World'
-        }
+        tags = Tag.all
 
-        return render :json => data
+        return render :json => tags
     end
 end

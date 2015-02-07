@@ -16,8 +16,8 @@ class ApiController < ApplicationController
         app = App.find_by(key: params[:api_key])
         if !app
             error = {
-                'status' => status,
-                'message' => 'Invalid api key provided.'
+                status: status,
+                message: 'Invalid api key provided.'
             }
 
             return render :json => error, :status => status
