@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     # API - Tags
     get '/api/tags' => 'tags#index'
+    get '/api/tags/:id' => 'tags#single'
 
     root :to => 'home#index'
 end

@@ -23,4 +23,13 @@ class ApiController < ApplicationController
             return render :json => error, :status => status
         end
     end
+
+    def not_found
+        error = {
+            status: 404,
+            message: 'Requested resource not found.'
+        }
+
+        return render :json => error, :status => status
+    end
 end
