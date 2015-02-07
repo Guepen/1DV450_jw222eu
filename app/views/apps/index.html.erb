@@ -14,7 +14,9 @@
                 <dd><b>Nyckel:</b> <%= user.app[:key] %></dd>
             </dl>
 
-            <%= link_to 'Radera', { :controller  => 'apps', :action => 'delete', :key => user.app[:key] }, :class => 'btn btn-danger' %>
+            <p>
+                <%= link_to 'Radera', { :controller  => 'apps', :action => 'delete', :key => user.app[:key] }, :class => 'btn btn-danger' %>
+            </p>
 
         <%
             end
