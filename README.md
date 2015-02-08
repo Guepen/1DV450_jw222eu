@@ -23,7 +23,6 @@ Projekt för kursen 1DV450 Webbramverk vid LNU våren 2015.
 ## Skapa en "Rails secret"
 1. Skapa en fil som heter `secrets.yml` i mappen `config`.
 2. Lägg in följande i denna fil:
-
     ```
     development:
       secret_key_base:
