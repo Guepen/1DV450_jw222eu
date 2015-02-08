@@ -12,7 +12,7 @@ Projekt för kursen 1DV450 Webbramverk vid LNU våren 2015.
 4. Kör `gem install bundle`.
 5. Gå till den mapp där Rails-appen ligger och kör `bundle install`.
 6. Kör `rake db:migrate` för att sätta upp databasen.
-7. Starta en Rails-konsol med `rails c` och kör följande kommando för att skapa en ny admin-användare: `User.create(email: 'DIN EPOST', password: 'DITT LÖSENORD', is_admin: 1)`.
+7. Starta en Rails-konsol med `rails c` och kör följande kommando för att skapa en ny admin-användare: `User.create(email: 'DIN EPOST', password: 'DITT LÖSENORD', name: 'DITT NAMN', is_admin: 1)`.
 8. Kör `rails s` för att starta en lokal server.
 9. Gå till den adress där Rails säger att den kör och börja använd applikationen!
 
