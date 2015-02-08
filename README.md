@@ -14,7 +14,7 @@ Projekt för kursen 1DV450 Webbramverk vid LNU våren 2015.
 6. Kör `rake db:migrate` för att sätta upp databasen.
 7. Starta en Rails-konsol med `rails c` och kör följande kommando för att skapa en ny admin-användare: `User.create(email: 'DIN EPOST', password: 'DITT LÖSENORD', name: 'DITT NAMN', is_admin: 1)`.
 8. Gå ur Rails-konslen med `exit`.
-9. Följ stegen i "Skapa en "Rails secret"" nedan.
+9. Följ stegen i **Skapa en "Rails secret"** nedan.
 9. Kör `rails s` för att starta en lokal server. Se **Digital Ocean** nedan om du kör där.
 10. Gå till den adress där Rails säger att den kör och börja använd applikationen!
 
