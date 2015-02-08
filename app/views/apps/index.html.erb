@@ -10,6 +10,7 @@
             <dl>
                 <dt><%= user.app[:title] %></dt>
                 <dd><%= simple_format(user.app[:description]) %></dd>
+                <dd><b>Namn:</b> <%= user.name %></dd>
                 <dd><b>E-post:</b> <%= user.email %></dd>
                 <dd><b>Nyckel:</b> <%= user.app[:key] %></dd>
             </dl>

@@ -66,7 +66,10 @@ class AppsController < ApplicationController
         is_valid = app.save
 
         if !is_valid
-            return redirect_to apps_create_path, :notice => 'Alla fält måste fyllas i.'
+            flash[:notice] = app.errors
+            flash[:fields] = params
+
+            return redirect_to apps_create_path
         end
 
         redirect_to apps_path
