@@ -59,4 +59,30 @@ class UsersController < ApplicationController
     def register
         require_guest
     end
+
+    def settings
+        require_login
+
+        @user = User.find_by(id: session[:user])
+    end
+
+    def update
+        require_login
+
+        user = User.find_by(id: session[:user])
+        user.name = params[:name]
+        user.email = params[:email]
+
+        if params[:password]
+            user.password = params[:password]
+        end
+
+        is_valid = user.save
+
+        if !is_valid
+            return redirect_to users_settings_path, :notice => 'Alla fält måste fyllas i.'
+        end
+
+        redirect_to users_settings_path
+    end
 end

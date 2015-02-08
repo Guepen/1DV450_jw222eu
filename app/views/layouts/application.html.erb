@@ -23,6 +23,7 @@
 
                 <% if is_signed_in? %>
                 <ul class="nav navbar-nav navbar-right">
+                    <li><%= link_to 'Inställningar', users_settings_path %></li>
                     <li><%= link_to 'Logga ut', logout_path %></li>
                 </ul>
                 <% end %>

@@ -1,0 +1,33 @@
+
+    <div class="container">
+
+        <h1>Inställningar</h1>
+
+        <form action="<%= url_for users_update_path %>" method="post">
+
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
+
+            <p>
+                <%= flash[:notice] %>
+            </p>
+
+            <label for="name">Ditt namn</label>
+            <p>
+                <input type="text" name="name" id="name" value="<%= @user.name %>" required>
+            </p>
+
+            <label for="email">Email</label>
+            <p>
+                <input type="email" name="email" id="email" value="<%= @user.email %>" required>
+            </p>
+
+            <label for="password">Lösenord (lämna tomt om du inte vill ändra det)</label>
+            <p>
+                <input type="password" name="password" id="password">
+            </p>
+
+            <input type="submit" value="Uppdatera" class="btn btn-primary">
+
+        </form>
+
+    </div>
