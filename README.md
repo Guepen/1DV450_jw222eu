@@ -9,8 +9,8 @@ Projekt för kursen 1DV450 Webbramverk vid LNU våren 2015.
 1. Öppna Terminalen/kommandotolken. Gå till en bra mapp, `cd /någon/mapp/nånstans/`.
 2. Klona repot med `git clone https://github.com/jwilsson/1DV450_jw222eu.git`.
 3. Gå in i den nya mapp som Git skapar, `cd 1DV450_jw222eu`.
-4. Kör `gem install bundle`. Får du problem och använder Digital Ocean, se nedan.
-5. Gå till den mapp där Rails-appen ligger och kör `bundle install`.
+4. Kör `gem install bundle`.
+5. Gå till den mapp där Rails-appen ligger och kör `bundle install`. Får du problem och använder Digital Ocean, se nedan.
 6. Kör `rake db:migrate` för att sätta upp databasen.
 7. Starta en Rails-konsol med `rails c` och kör följande kommando för att skapa en ny admin-användare: `User.create(email: 'DIN EPOST', password: 'DITT LÖSENORD', name: 'DITT NAMN', is_admin: 1)`.
 8. Gå ur Rails-konslen med `exit`.
