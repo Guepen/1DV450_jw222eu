@@ -9,7 +9,7 @@ Projekt för kursen 1DV450 Webbramverk vid LNU våren 2015.
 1. Öppna Terminalen/kommandotolken. Gå till en bra mapp, `cd /någon/mapp/nånstans/`.
 2. Klona repot med `git clone https://github.com/jwilsson/1DV450_jw222eu.git`.
 3. Gå in i den nya mapp som Git skapar, `cd 1DV450_jw222eu`.
-4. Kör `gem install bundle`.
+4. Kör `gem install bundle`. Får du problem och använder Digital Ocean, se nedan.
 5. Gå till den mapp där Rails-appen ligger och kör `bundle install`.
 6. Kör `rake db:migrate` för att sätta upp databasen.
 7. Starta en Rails-konsol med `rails c` och kör följande kommando för att skapa en ny admin-användare: `User.create(email: 'DIN EPOST', password: 'DITT LÖSENORD', name: 'DITT NAMN', is_admin: 1)`.
@@ -23,10 +23,12 @@ Projekt för kursen 1DV450 Webbramverk vid LNU våren 2015.
 ## Skapa en "Rails secret"
 1. Skapa en fil som heter `secrets.yml` i mappen `config`.
 2. Lägg in följande i denna fil:
+
     ```
     development:
       secret_key_base:
     ```
+
 3. Kör `rake secret` och kopiera värdet och lägg in efter `secret_key_base`.
 
 ### Digital Ocean
