@@ -27,6 +27,7 @@ Projekt för kursen 1DV450 Webbramverk vid LNU våren 2015.
     development:
       secret_key_base:
     ```
+    
 3. Kör `rake secret` och kopiera värdet och lägg in efter `secret_key_base`.
 
 ### Digital Ocean
