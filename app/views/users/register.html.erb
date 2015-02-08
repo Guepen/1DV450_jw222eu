@@ -7,18 +7,27 @@
 
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
 
-            <p>
-                <%= flash[:notice] %>
+            <p class="text-danger">
+                <%
+                if flash[:notice]
+                    flash[:notice].each do |attr, error|
+                %>
+                        <%= error.last %> <br>
+                <%
+                    end
+                end
+                %>
+
             </p>
 
             <label for="name">Ditt namn</label>
             <p>
-                <input type="text" name="name" id="name" required>
+                <input type="text" name="name" id="name" value="<%= get_field("name") %>" required>
             </p>
 
             <label for="email">Email</label>
             <p>
-                <input type="email" name="email" id="email" required>
+                <input type="email" name="email" id="email" value="<%= get_field("email") %>" required>
             </p>
 
             <label for="password">Lösenord</label>
@@ -28,12 +37,12 @@
 
             <label for="title">Namn på applikationen</label>
             <p>
-                <input type="text" name="title" id="title" required>
+                <input type="text" name="title" id="title" value="<%= get_field("title") %>" required>
             </p>
 
             <label for="description">Beskrivning av applikationen</label>
             <p>
-                <textarea name="description" id="description" rows="8" cols="40" required></textarea>
+                <textarea name="description" id="description" rows="8" cols="40" required><%= get_field("description") %></textarea>
             </p>
 
             <input type="submit" value="Registrera" class="btn btn-primary">

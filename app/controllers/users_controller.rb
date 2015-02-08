@@ -3,27 +3,35 @@ require 'digest/sha2'
 
 class UsersController < ApplicationController
     def create
+        flash[:fields] = params
+
         user = User.new
         user.name = params[:name]
         user.email = params[:email]
         user.password = params[:password]
 
-        is_valid = user.save
-
-        if !is_valid
-            return redirect_to register_path, :notice => 'Alla fält måste fyllas i.'
-        end
+        user.validate()
+        errors = user.errors
 
         app = App.new
         app.key = Digest::SHA1.new << user.email + SecureRandom.hex(8)
         app.title = params[:title]
         app.description = params[:description]
-        app.user_id = user.id
 
-        is_valid = app.save
+        app.validate()
+        app.errors.each do |attr, error|
+            errors.add(attr, error)
+        end
 
-        if !is_valid
-            return redirect_to register_path, :notice => 'Alla fält måste fyllas i.'
+        if errors.size() > 0
+            flash[:notice] = errors
+
+            return redirect_to register_path
+        else
+            user.save
+
+            app.user_id = user.id
+            app.save
         end
 
         session[:user] = user.id
