@@ -7,18 +7,26 @@
 
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
 
-            <p>
-                <%= flash[:notice] %>
+            <p class="text-danger">
+                <%
+                if flash[:notice]
+                    flash[:notice].each do |attr, error|
+                %>
+                        <%= error.last %> <br>
+                <%
+                    end
+                end
+                %>
             </p>
 
             <label for="name">Ditt namn</label>
             <p>
-                <input type="text" name="name" id="name" value="<%= @user.name %>" required>
+                <input type="text" name="name" id="name" value="<%= get_field("name") || @user.name %>" required>
             </p>
 
             <label for="email">Email</label>
             <p>
-                <input type="email" name="email" id="email" value="<%= @user.email %>" required>
+                <input type="email" name="email" id="email" value="<%= get_field("email") || @user.email %>" required>
             </p>
 
             <label for="password">Lösenord (lämna tomt om du inte vill ändra det)</label>
