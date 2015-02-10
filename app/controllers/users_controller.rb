@@ -96,6 +96,6 @@ class UsersController < ApplicationController
             return redirect_to users_settings_path
         end
 
-        redirect_to users_settings_path
+        redirect_to users_settings_path, alert: 'Dina inställningar är uppdaterade.'
     end
 end
