@@ -7,9 +7,21 @@
 
             <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>" />
 
-            <p class="text-danger">
-                <%= flash[:notice] %>
-            </p>
+            <%
+            if flash[:notice]
+            %>
+                <p class="text-danger">
+                    <%= flash[:notice] %>
+                </p>
+            <%
+            elsif flash[:alert]
+            %>
+                <p class="text-success">
+                    <%= flash[:alert] %>
+                </p>
+            <%
+            end
+            %>
 
             <label for="email">Email</label>
             <p>

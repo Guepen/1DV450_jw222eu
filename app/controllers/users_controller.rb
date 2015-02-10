@@ -63,7 +63,7 @@ class UsersController < ApplicationController
         require_login
         reset_session
 
-        redirect_to root_path, :notice => 'Du är utloggad.'
+        redirect_to root_path, :alert => 'Du är utloggad.'
     end
 
     def register
