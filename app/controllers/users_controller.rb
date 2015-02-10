@@ -42,6 +42,8 @@ class UsersController < ApplicationController
     def login
         require_guest
 
+        flash[:fields] = params
+
         user = User.find_by(email: params[:email])
         if !user
             return redirect_to root_path, :notice => 'Fel användarnamn eller lösenord.'
