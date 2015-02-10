@@ -3,7 +3,7 @@
         <h1>API-nycklar</h1>
 
         <%
-        if @users
+        if @users && @users.size() > 0
             @users.each do |user|
         %>
 
@@ -40,11 +40,15 @@
                 Inga nycklar hittades.
             </p>
 
+            <%
+            if !is_admin
+            %>
             <p>
                 <%= link_to 'Skapa ny applikation', apps_create_path, :class => 'btn btn-success' %>
             </p>
 
         <%
+            end
         end
         %>
 

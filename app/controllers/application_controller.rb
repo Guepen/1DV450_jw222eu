@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
     # For APIs, you may want to use :null_session instead.
     protect_from_forgery
 
+    helper_method :is_admin
+
     def require_login
         if !session[:user] || !user_exists?
             reset_session
