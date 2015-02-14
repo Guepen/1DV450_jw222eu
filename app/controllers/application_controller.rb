@@ -3,28 +3,36 @@ class ApplicationController < ActionController::Base
     # For APIs, you may want to use :null_session instead.
     protect_from_forgery
 
-    helper_method :is_signed_in?
+    helper_method :is_admin
 
     def require_login
-        if !session[:user]
+        if !session[:user] || !user_exists?
+            reset_session
+
             redirect_to root_path, :notice => 'Du måste vara inloggad för att visa denna sida'
         end
     end
 
     def require_guest
-        if session[:user]
+        if session[:user] && user_exists?
             redirect_to apps_path
         end
+    end
+
+    def user_exists?
+        user = User.find_by(id: session[:user])
+
+        !!user
     end
 
     def is_admin
         user = session[:user]
         user = User.where(id: user).take
 
-        user.is_admin == 1
-    end
+        if !user
+            return false
+        end
 
-    def is_signed_in?
-        !!session[:user]
+        user.is_admin == 1
     end
 end

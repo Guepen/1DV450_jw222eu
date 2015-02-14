@@ -3,13 +3,14 @@
         <h1>API-nycklar</h1>
 
         <%
-        if @users
+        if @users && @users.size() > 0
             @users.each do |user|
         %>
 
             <dl>
                 <dt><%= user.app[:title] %></dt>
                 <dd><%= simple_format(user.app[:description]) %></dd>
+                <dd><b>Namn:</b> <%= user.name %></dd>
                 <dd><b>E-post:</b> <%= user.email %></dd>
                 <dd><b>Nyckel:</b> <%= user.app[:key] %></dd>
             </dl>
@@ -39,11 +40,15 @@
                 Inga nycklar hittades.
             </p>
 
+            <%
+            if !is_admin
+            %>
             <p>
                 <%= link_to 'Skapa ny applikation', apps_create_path, :class => 'btn btn-success' %>
             </p>
 
         <%
+            end
         end
         %>
 
