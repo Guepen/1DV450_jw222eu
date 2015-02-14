@@ -14,6 +14,6 @@ class TagsController < ApiController
             return render :json => tag
         end
 
-        not_found
+        not_found 'tag'
     end
 end
