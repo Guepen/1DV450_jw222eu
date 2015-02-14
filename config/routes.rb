@@ -14,8 +14,12 @@ Rails.application.routes.draw do
     post '/apps/save' => 'apps#save'
 
     # API - Tags
-    get '/api/tags' => 'tags#index'
-    get '/api/tags/:id' => 'tags#single'
+    get '/api/v1/tags' => 'tags#index'
+    get '/api/v1/tags/:id' => 'tags#single'
+
+    # API - Locations
+    get '/api/v1/locations' => 'locations#index'
+    get '/api/v1/locations:id' => 'locations#single'
 
     root :to => 'home#index'
 end
