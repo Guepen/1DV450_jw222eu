@@ -5,31 +5,25 @@ class ApiController < ApplicationController
         status = 401
 
         if !params[:api_key]
-            error = {
-                status: status,
-                message: 'No api key provided.'
-            }
-
-            return render :json => error, :status => status
+            return api_error(status, 'No api key provided.')
         end
 
         app = App.find_by(key: params[:api_key])
         if !app
-            error = {
-                status: status,
-                message: 'Invalid api key provided.'
-            }
-
-            return render :json => error, :status => status
+            return api_error(status, 'Invalid api key provided.')
         end
     end
 
-    def not_found(type)
+    def api_error(status, message)
         error = {
-            status: 404,
-            message: 'Requested ' + type + ' not found.'
+            status: status,
+            message: message
         }
 
-        return render :json => error, :status => status
+        render :json => error, :status => status
+    end
+
+    def not_found(type)
+        api_error(404, 'Requested ' + type + ' not found.')
     end
 end
