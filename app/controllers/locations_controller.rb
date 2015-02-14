@@ -2,18 +2,29 @@ class LocationsController < ApiController
     before_filter :require_authentication
 
     def index
-        tags = Location.order(created_at: :desc)
+        locations = Location.order(created_at: :desc)
 
-        return render :json => tags
+        return render :json => locations
     end
 
     def single
-        tag = Location.find_by(id: params[:id])
+        location = Location.find_by(id: params[:id])
 
-        if tag
-            return render :json => tag
+        if location
+            return render :json => location
         end
 
         not_found 'location'
+    end
+
+    def search
+        if !params[:q]
+            return api_error(400, 'No search query')
+        end
+
+        q = params[:q]
+        locations = Location.where('name LIKE :search', search: "%#{q}%")
+
+        return render :json => locations
     end
 end

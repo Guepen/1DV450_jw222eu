@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
     # API - Locations
     get '/api/v1/locations' => 'locations#index'
+    get '/api/v1/locations/search' => 'locations#search'
     get '/api/v1/locations/:id' => 'locations#single'
 
     root :to => 'home#index'
