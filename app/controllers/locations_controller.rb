@@ -2,7 +2,7 @@ class LocationsController < ApiController
     before_filter :require_authentication
 
     def index
-        tags = Location.all
+        tags = Location.order(created_at: :desc)
 
         return render :json => tags
     end
