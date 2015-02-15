@@ -1,10 +1,14 @@
+require "yaml"
+
 class LocationsController < ApiController
     before_filter :require_authentication
 
     def index
-        locations = Location.order(created_at: :desc)
+        query = Location.select('*')
+        query = query.order(created_at: :desc)
+        query = limit_and_offset(query)
 
-        return render :json => locations
+        return render :json => query
     end
 
     def single

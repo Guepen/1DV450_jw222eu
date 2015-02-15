@@ -2,9 +2,10 @@ class TagsController < ApiController
     before_filter :require_authentication
 
     def index
-        tags = Tag.all
+        query = Tag.select('*')
+        query = limit_and_offset(query)
 
-        return render :json => tags
+        return render :json => query
     end
 
     def single
