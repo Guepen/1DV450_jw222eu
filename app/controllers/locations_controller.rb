@@ -29,4 +29,18 @@ class LocationsController < ApiController
 
         return render :json => locations
     end
+
+    def delete
+        require_authentication
+
+        location = Location.find_by(id: params[:id])
+
+        if location
+            location.destroy
+
+            return head :no_content
+        end
+
+        return not_found 'location'
+    end
 end

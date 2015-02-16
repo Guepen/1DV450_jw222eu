@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     get '/api/v1/locations' => 'locations#index'
     get '/api/v1/locations/search' => 'locations#search'
     get '/api/v1/locations/:id' => 'locations#single'
+    delete '/api/v1/locations/:id' => 'locations#delete'
 
     # API - Owners
     get '/api/v1/owners' => 'owners#index'
