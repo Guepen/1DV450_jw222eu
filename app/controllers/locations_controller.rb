@@ -1,5 +1,3 @@
-require "yaml"
-
 class LocationsController < ApiController
     before_filter :require_authentication
 

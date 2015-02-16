@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150214135013) do
+ActiveRecord::Schema.define(version: 20150216174511) do
 
   create_table "apps", force: :cascade do |t|
     t.string   "key"
@@ -25,8 +25,16 @@ ActiveRecord::Schema.define(version: 20150214135013) do
   create_table "locations", force: :cascade do |t|
     t.string   "name"
     t.integer  "position_id"
+    t.integer  "owner_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.string   "username"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "positions", force: :cascade do |t|

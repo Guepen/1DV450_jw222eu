@@ -22,5 +22,9 @@ Rails.application.routes.draw do
     get '/api/v1/locations/search' => 'locations#search'
     get '/api/v1/locations/:id' => 'locations#single'
 
+    # API - Owners
+    get '/api/v1/owners' => 'owners#index'
+    get '/api/v1/owners/:id' => 'owners#single'
+
     root :to => 'home#index'
 end
