@@ -1,5 +1,5 @@
 class TagsController < ApiController
-    before_filter :require_authentication
+    before_filter :require_key
 
     def index
         query = Tag.select('*')

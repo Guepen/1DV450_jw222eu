@@ -1,5 +1,5 @@
 class LocationsController < ApiController
-    before_filter :require_authentication
+    before_filter :require_key
 
     def index
         query = Location.select('*')

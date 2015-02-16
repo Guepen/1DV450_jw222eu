@@ -1,7 +1,11 @@
 class ApiController < ApplicationController
-    helper_method :require_authentication
+    helper_method :require_key
 
     def require_authentication
+
+    end
+
+    def require_key
         status = 401
 
         if !params[:api_key]
