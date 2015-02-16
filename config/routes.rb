@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
     # API - Owners
     get '/api/v1/owners' => 'owners#index'
+    get '/api/v1/owners/:id/locations' => 'owners#locations'
     get '/api/v1/owners/:id' => 'owners#single'
 
     root :to => 'home#index'
